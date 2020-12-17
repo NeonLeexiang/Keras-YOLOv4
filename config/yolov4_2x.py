@@ -31,15 +31,15 @@ class YOLOv4_2x_Config(object):
 
         # ========= 一些设置 =========
         self.train_cfg = dict(
-            lr=0.0001,
+            lr=0.0001,      # 0.0001
             batch_size=8,
             num_threads=5,   # 读数据的线程数
             max_batch=3,     # 最大读多少个批
             model_path='yolov4_2x.h5',
             # model_path='./weights/step00020000.h5',
-            save_iter=1000,   # 每隔几步保存一次模型
-            eval_iter=5000,   # 每隔几步计算一次eval集的mAP
-            max_iters=500000,   # 训练多少步
+            save_iter=10,   # 每隔几步保存一次模型 1000
+            eval_iter=50,   # 每隔几步计算一次eval集的mAP 5000
+            max_iters=5000,   # 训练多少步 500000
         )
 
 
@@ -47,7 +47,7 @@ class YOLOv4_2x_Config(object):
         self.eval_cfg = dict(
             model_path='yolov4_2x.h5',
             # model_path='./weights/step00005000.h5',
-            target_size=608,
+            target_size=320,     # 608
             draw_image=False,    # 是否画出验证集图片
             draw_thresh=0.15,    # 如果draw_image==True，那么只画出分数超过draw_thresh的物体的预测框。
             eval_batch_size=4,   # 验证时的批大小。
@@ -57,7 +57,7 @@ class YOLOv4_2x_Config(object):
         self.test_cfg = dict(
             model_path='yolov4_2x.h5',
             # model_path='./weights/step00020000.h5',
-            target_size=608,
+            target_size=320,    # 608
             # target_size=320,
             draw_image=True,
             draw_thresh=0.15,   # 如果draw_image==True，那么只画出分数超过draw_thresh的物体的预测框。
@@ -95,15 +95,15 @@ class YOLOv4_2x_Config(object):
         self.iou_loss_type = 'IouLoss'
         self.iou_loss = dict(
             loss_weight=2.5,
-            max_height=608,
-            max_width=608,
+            max_height=320,     # 608
+            max_width=320,      # 608
             ciou_term=True,
         )
         self.iou_aware_loss_type = 'IouAwareLoss'
         self.iou_aware_loss = dict(
             loss_weight=1.0,
-            max_height=608,
-            max_width=608,
+            max_height=320,     # 608
+            max_width=320,      # 608
         )
         self.yolo_loss_type = 'YOLOv3Loss'
         self.yolo_loss = dict(
